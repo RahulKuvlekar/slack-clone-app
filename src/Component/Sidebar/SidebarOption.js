@@ -1,6 +1,6 @@
 import React from "react";
 import "./SidebarOption.css";
-
+// import { Link } from "react-router-dom";
 const SidebarOption = (props) => {
   return (
     <div className="sidebarOption">

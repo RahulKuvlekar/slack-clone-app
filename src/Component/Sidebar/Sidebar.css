@@ -3,10 +3,11 @@
   color: white;
   max-width: 260px;
   border-top: 1.5px solid #49274b;
+  flex: 0.3;
 }
-.sidebar > hr{
-    margin: 10px 0;
-    border: 1px solid #49274b;
+.sidebar > hr {
+  margin: 10px 0;
+  border: 1px solid #49274b;
 }
 .sidebar__header {
   display: flex;

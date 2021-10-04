@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Sidebar.css";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import CreateIcon from "@mui/icons-material/Create";
 import SidebarOption from "./SidebarOption";
-
+import db from "../../firebase";
 import InsertCommentIcon from "@mui/icons-material/InsertComment";
 import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
@@ -12,10 +12,28 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AppsIcon from "@mui/icons-material/Apps";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import AddIcon from '@mui/icons-material/Add';
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AddIcon from "@mui/icons-material/Add";
 
 const Sidebar = () => {
+  const [channel, setChannel] = useState([
+    // { name: "Rahul", id: 2123123 },
+    // { name: "idk", id: 21313 },
+  ]);
+
+  useEffect(() => {
+    db.collection("rooms").onSnapshot((snapshot) => {
+      console.log(snapshot.docs);
+      return setChannel(
+        snapshot.docs.map((channel) => ({
+          id: channel.id,
+          name: channel.data().name,
+        }))
+      );
+    });
+  }, []);
+
+  // console.log(channel);
   return (
     <aside className="sidebar">
       <div className="sidebar__header">
@@ -41,8 +59,11 @@ const Sidebar = () => {
       <hr />
       <SidebarOption Icon={AddIcon} title="Add Channels" />
       {/* Connect to DataBase and Add More Channels */}
-      <SidebarOption title="Youtube Channel"/>
-      <SidebarOption title="Instagram Channel"/>
+      {channel.length > 0 &&
+        channel.map((data) => {
+          // console.log(data.name);
+          return <SidebarOption title={data.name} key={data.id} id={data.id} />;
+        })}
     </aside>
   );
 };

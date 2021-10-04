@@ -1,3 +1,11 @@
-/* .App {
-  text-align: center;
+.App {
+  overflow: hidden;
+}
+.app__body {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+/* .app__body > aside {
+  max-width: 260px;
 } */

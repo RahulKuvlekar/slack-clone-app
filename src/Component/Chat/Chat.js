@@ -1,0 +1,27 @@
+import React from "react";
+import "./Chat.css";
+import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+
+const Chat = () => {
+  return (
+    <div className="chat">
+      <div className="chat__header">
+        <div className="chat__headerLeft">
+          <h4 className="chat__channelName">
+            <strong>#General</strong>
+            <StarBorderOutlinedIcon/>
+          </h4>
+        </div>
+        <div className="chat__headerRight">
+            <p>
+                <InfoOutlinedIcon/>
+                Details
+            </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Chat;
