@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import StateContext from "./state-context";
 
 const defaultState = {
-  //   user: "rahul",
+  //   user: { displayName: "rahul" },
   user: null,
 };
 

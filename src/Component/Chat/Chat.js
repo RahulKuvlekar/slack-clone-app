@@ -5,6 +5,7 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import db from "../../firebase";
 import { useParams } from "react-router";
 import ChatMessage from "./ChatMessage";
+import ChatInputMessage from "./ChatInputMessage";
 // import { collection, getDocs } from "firebase/firestore";
 
 const Chat = () => {
@@ -18,7 +19,7 @@ const Chat = () => {
       db.collection("rooms")
         .doc(roomId)
         .onSnapshot((snapshot) => {
-        //   console.log(snapshot.data());
+          //   console.log(snapshot.data());
           return setChannel(snapshot.data());
         });
       console.log();
@@ -34,10 +35,10 @@ const Chat = () => {
         );
     }
   }, [roomId]);
-//   console.log("ChannelData", channelMessage);
+  //   console.log("ChannelData", channelMessage);
   return (
     <div className="chat">
-      <div className="chat__header"> 
+      <div className="chat__header">
         <div className="chat__headerLeft">
           <h4 className="chat__channelName">
             <strong>#{channel?.name}</strong>
@@ -60,10 +61,11 @@ const Chat = () => {
               userimage={data.userimage}
               timestamp={data.timestamp}
               id={data.id}
-            // data={data}
+              // data={data}
             />
           ))}
       </div>
+      <ChatInputMessage channelName={channel?.name} channelId={roomId} />
     </div>
   );
 };

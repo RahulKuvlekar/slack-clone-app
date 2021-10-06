@@ -1,7 +1,7 @@
 .chat__message {
   display: flex;
   align-items: center;
-  padding: 1.4rem;
+  padding: .5rem 1.4rem;
 }
 
 .chat__message img {
