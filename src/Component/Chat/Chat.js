@@ -18,7 +18,7 @@ const Chat = () => {
       db.collection("rooms")
         .doc(roomId)
         .onSnapshot((snapshot) => {
-          console.log(snapshot.data());
+        //   console.log(snapshot.data());
           return setChannel(snapshot.data());
         });
       console.log();
@@ -34,7 +34,7 @@ const Chat = () => {
         );
     }
   }, [roomId]);
-  console.log("ChannelData", channelMessage);
+//   console.log("ChannelData", channelMessage);
   return (
     <div className="chat">
       <div className="chat__header"> 

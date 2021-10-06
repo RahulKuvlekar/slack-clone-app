@@ -1,16 +1,17 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Header from "./Component/Header/Header";
 import Sidebar from "./Component/Sidebar/Sidebar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Chat from "./Component/Chat/Chat";
 import Login from "./Component/Login/Login";
+import StateContext from "./Context/state-context";
 function App() {
-  const [user, setUser] = useState(null);
-  console.log(setUser);
+  const context = useContext(StateContext);
+  console.log("Context => ", context);
   return (
     <Router>
-      {!user ? (
+      {!context.user ? (
         <Login />
       ) : (
         <div className="App">

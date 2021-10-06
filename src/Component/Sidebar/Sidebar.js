@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Sidebar.css";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import CreateIcon from "@mui/icons-material/Create";
@@ -14,12 +14,14 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
+import StateContext from "../../Context/state-context";
 
 const Sidebar = () => {
   const [channel, setChannel] = useState([
     // { name: "Rahul", id: 2123123 },
     // { name: "idk", id: 21313 },
   ]);
+  const context = useContext(StateContext);
 
   useEffect(() => {
     db.collection("rooms").onSnapshot((snapshot) => {
@@ -41,7 +43,7 @@ const Sidebar = () => {
           <h2>DarkLord's Macbook</h2>
           <h3>
             <FiberManualRecordIcon />
-            Rahul Kuvlekar
+            {context.user?.displayName} 
           </h3>
         </div>
         <CreateIcon />

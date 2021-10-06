@@ -1,13 +1,17 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import "./Login.css";
 import { auth, provider } from "../../firebase";
+import StateContext from "../../Context/state-context";
 const Login = () => {
+  const context = useContext(StateContext);
+
   const signIn = () => {
     auth
       .signInWithPopup(provider)
       .then((result) => {
-        console.log("Sucessfull :- ",result);
+        // console.log("Sucessfull :- ", result.user);
+        context.addUser(result.user);
       })
       .catch((error) => {
         console.log(
@@ -20,7 +24,7 @@ const Login = () => {
         );
       });
   };
-
+  console.log("Login User", context.user);
   return (
     <div className="login">
       <div className="login__container">
