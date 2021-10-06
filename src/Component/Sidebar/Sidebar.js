@@ -40,7 +40,7 @@ const Sidebar = () => {
     <aside className="sidebar">
       <div className="sidebar__header">
         <div className="sidebar__header__info">
-          <h2>DarkLord's Macbook</h2>
+          <h2>Kuvlekar@Slack</h2>
           <h3>
             <FiberManualRecordIcon />
             {context.user?.displayName}

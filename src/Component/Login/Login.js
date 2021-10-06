@@ -12,6 +12,7 @@ const Login = () => {
       .then((result) => {
         // console.log("Sucessfull :- ", result.user);
         context.addUser(result.user);
+        localStorage.setItem('user', JSON.stringify(result.user));
       })
       .catch((error) => {
         console.log(

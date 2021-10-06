@@ -3,7 +3,7 @@ import StateContext from "./state-context";
 
 const defaultState = {
   //   user: { displayName: "rahul" },
-  user: null,
+  user: JSON.parse(localStorage.getItem("user")),
 };
 
 const dataReducer = (prevState, action) => {
