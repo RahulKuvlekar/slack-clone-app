@@ -7,6 +7,9 @@
   cursor: pointer;
   /* height: 3vh; */
 }
+.sidebarOption__channel__spaceBtw {
+  justify-content: space-between !important;
+}
 .sidebarOption:hover {
   background-color: #340e36;
   opacity: 0.7;
