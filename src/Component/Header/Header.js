@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Header.css";
 import Avatar from "@mui/material/Avatar";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import SearchIcon from "@mui/icons-material/Search";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import StateContext from "../../Context/state-context";
+
 const Header = (props) => {
+  const context = useContext(StateContext);
+  // console.log("HEADER => ", context);
   return (
     <div className="header">
       <div className="header__left">
-        <Avatar className="header__avatar" onClick={props.onClick} />
+        {context.user?.photoURL ? (
+          <img
+            style={{ width: "3rem", borderRadius: "50%" }}
+            src={context.user?.photoURL}
+            alt={context.user?.displayName}
+          />
+        ) : (
+          <Avatar className="header__avatar" onClick={props.onClick} />
+        )}
         <AccessTimeIcon />
       </div>
       <div className="header__search">
