@@ -14,12 +14,17 @@ const Header = (props) => {
       <div className="header__left">
         {context.user?.photoURL ? (
           <img
-            style={{ width: "3rem", borderRadius: "50%" }}
+            style={{ width: "3rem", borderRadius: "50%", cursor: "pointer" }}
             src={context.user?.photoURL}
             alt={context.user?.displayName}
+            onClick={props.onClick}
           />
         ) : (
-          <Avatar className="header__avatar" onClick={props.onClick} />
+          <Avatar
+            className="header__avatar"
+            style={{ cursor: "pointer" }}
+            onClick={props.onClick}
+          />
         )}
         <AccessTimeIcon />
       </div>

@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import StateContext from "./state-context";
+import toastReducer from "./toastReducer";
 
 const defaultState = {
   //   user: { displayName: "rahul" },
@@ -23,6 +24,8 @@ const dataReducer = (prevState, action) => {
 const StateContextProvider = (props) => {
   const [dataState, dataDispatch] = useReducer(dataReducer, defaultState);
 
+  const [stateToast, dispatchToast] = useReducer(toastReducer, []);
+
   const addUserHandler = (user) => {
     dataDispatch({ task: "SET_USER", user: user });
   };
@@ -30,6 +33,8 @@ const StateContextProvider = (props) => {
   const dataContext = {
     user: dataState.user,
     addUser: addUserHandler,
+    toast: stateToast,
+    dispatchToast,
   };
   return (
     <StateContext.Provider value={dataContext}>
