@@ -15,14 +15,13 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
 import StateContext from "../../Context/state-context";
-import EditIcon from "@mui/icons-material/Edit";
 const Sidebar = () => {
   const [channel, setChannel] = useState([
     // { name: "Rahul", id: 2123123 },
     // { name: "idk", id: 21313 },
   ]);
   const context = useContext(StateContext);
-
+  // console.log("CONTEXT SIDEBAR ", context);
   useEffect(() => {
     db.collection("rooms").onSnapshot((snapshot) => {
       // console.log(snapshot.docs);
@@ -59,19 +58,17 @@ const Sidebar = () => {
       <hr />
       <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
       <hr />
-      <SidebarOption Icon={AddIcon} title="Add Channels" addChannel />
+      <SidebarOption
+        Icon={AddIcon}
+        title="Add Channels"
+        creatorId={context.user?.uid}
+        addChannel
+      />
       {/* Connect to DataBase and Add More Channels */}
       {channel.length > 0 &&
         channel.map((data) => {
           // console.log(data.name);
-          return (
-            <SidebarOption
-              title={data.name}
-              key={data.id}
-              id={data.id}
-              editIcon={EditIcon}
-            />
-          );
+          return <SidebarOption title={data.name} key={data.id} id={data.id} />;
         })}
     </aside>
   );

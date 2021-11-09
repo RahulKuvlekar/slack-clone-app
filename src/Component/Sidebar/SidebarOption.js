@@ -1,30 +1,42 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import StateContext from "../../Context/state-context";
 import { useHistory } from "react-router";
 import "./SidebarOption.css";
 import db from "../../firebase";
+import Modal from "../UI/Modal/Modal";
+import { v4 as uuidv4 } from "uuid";
 // import { Link } from "react-router-dom";
 
 const SidebarOption = (props) => {
+  const context = useContext(StateContext);
   const history = useHistory();
-
+  const [addChannelModal, setAddChannelModal] = useState(false);
+  const [channelNameInput, showChannelNameInput] = useState("");
+  const hideAddChannelModal = () => {
+    setAddChannelModal(false);
+  };
+  const OpenAddChannelModal = () => {
+    setAddChannelModal(true);
+  };
   const addChannelHandler = () => {
-    const newChannelName = prompt("Please Enter the Channel Name");
-    if (newChannelName) {
+    console.log(props.creatorId, " creator ID");
+    if (channelNameInput.trim() !== "") {
       db.collection("rooms").add({
-        name: newChannelName,
+        name: channelNameInput,
+        creatorId: props.creatorId,
+      });
+
+      context.dispatchToast({
+        type: "ADD_NOTIFICATION",
+        payload: {
+          id: uuidv4(),
+          type: "SUCCESS",
+          title: "Sucessfull Created new Account",
+          message: `${channelNameInput} Account is been created`,
+        },
       });
     }
-  };
-
-  const editChannelname = () => {
-    const editedName = prompt("Please New the Channel Name");
-    if (editedName) {
-      db.collection("rooms").doc(props.id).update({ name: editedName });
-    }
-    // if (editedName) {
-    //   db.collection("rooms").doc(props.id).delete();
-    // }
-    // console.log(db.collection("rooms").doc(props.id));
+    hideAddChannelModal();
   };
 
   const selectChannelHandler = () => {
@@ -35,24 +47,43 @@ const SidebarOption = (props) => {
     }
   };
   return (
-    <div
-      className={`sidebarOption ${
-        props.editIcon ? "sidebarOption__channel__spaceBtw" : ""
-      }`}
-      onClick={props.addChannel ? addChannelHandler : selectChannelHandler}
-    >
-      {props.Icon && <props.Icon className="sidebarOption__icon" />}
-      {props.Icon ? (
-        <h3>{props.title}</h3>
-      ) : (
-        <h3 className="sidebarOption__channel">
-          <span className="sidebarOption__icon__hash">#</span> {props.title}
-        </h3>
+    <>
+      {addChannelModal && (
+        <Modal onHideCart={hideAddChannelModal}>
+          <div className="editModal__section">
+            <h2>New Channel Name:-</h2>
+            <input
+              onChange={(event) => showChannelNameInput(event.target.value)}
+              type="text"
+            />
+            <div className="modal__btns">
+              <button onClick={hideAddChannelModal}>Cancel</button>
+              <button
+                disabled={channelNameInput.trim() === ""}
+                onClick={addChannelHandler}
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </Modal>
       )}
-      <div onClick={editChannelname}>
-        {props.editIcon && <props.editIcon />}
+      <div
+        className={`sidebarOption ${
+          props.editIcon ? "sidebarOption__channel__spaceBtw" : ""
+        }`}
+        onClick={props.addChannel ? OpenAddChannelModal : selectChannelHandler}
+      >
+        {props.Icon && <props.Icon className="sidebarOption__icon" />}
+        {props.Icon ? (
+          <h3>{props.title}</h3>
+        ) : (
+          <h3 className="sidebarOption__channel">
+            <span className="sidebarOption__icon__hash">#</span> {props.title}
+          </h3>
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

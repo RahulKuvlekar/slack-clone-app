@@ -18,7 +18,9 @@ const ChatInputMessage = (props) => {
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         username: context.user.displayName,
         userimage: context.user.photoURL,
+        userId: context.user.uid,
       });
+      setInput("");
     }
     // console.log("SET INPUT", setInput);
   };
@@ -29,6 +31,7 @@ const ChatInputMessage = (props) => {
       <form>
         <input
           onChange={(event) => setInput(event.target.value)}
+          value={input}
           type="text"
           placeholder="Enter your Message"
         />

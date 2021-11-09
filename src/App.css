@@ -9,3 +9,9 @@
 /* .app__body > aside {
   max-width: 260px;
 } */
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}

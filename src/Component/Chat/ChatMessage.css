@@ -1,7 +1,21 @@
+.chatbox {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
 .chat__message {
   display: flex;
   align-items: center;
-  padding: .5rem 1.4rem;
+  padding: 0.5rem 1.4rem;
+}
+.edit-btn__chatmessage {
+  padding: 0 1rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.edit-btn__chatmessage:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .chat__message img {

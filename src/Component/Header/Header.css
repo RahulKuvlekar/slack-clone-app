@@ -49,12 +49,23 @@
   justify-content: space-around;
 }
 
+.logout__Btn {
+  backgroundcolor: white;
+  border: none;
+  width: 100%;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+.logout__Btn:hover {
+  background-color: rgb(209, 209, 209);
+}
 @media all and (max-width: 450px) {
-  .header{
-      padding: 10px;
+  .header {
+    padding: 10px;
   }
 
-    .header__left {
+  .header__left {
     padding: 0;
   }
   .header__left > .MuiSvgIcon-root {
@@ -65,7 +76,7 @@
   }
   .header__search input {
     font-weight: bold;
-    font-size:medium;
+    font-size: medium;
     margin-left: 0;
   }
 }

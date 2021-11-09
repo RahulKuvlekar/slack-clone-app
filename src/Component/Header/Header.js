@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Header.css";
 import Avatar from "@mui/material/Avatar";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -8,7 +8,19 @@ import StateContext from "../../Context/state-context";
 
 const Header = (props) => {
   const context = useContext(StateContext);
+  const [showButton, setShowButton] = useState(false);
   // console.log("HEADER => ", context);
+  const showLogoutButton = () => {
+    setShowButton((prevState) => {
+      return !prevState;
+    });
+  };
+
+  if (showButton) {
+    setInterval(() => {
+      setShowButton(false);
+    }, 5000);
+  }
   return (
     <div className="header">
       <div className="header__left">
@@ -17,14 +29,33 @@ const Header = (props) => {
             style={{ width: "3rem", borderRadius: "50%", cursor: "pointer" }}
             src={context.user?.photoURL}
             alt={context.user?.displayName}
-            onClick={props.onClick}
+            onClick={showLogoutButton}
           />
         ) : (
           <Avatar
             className="header__avatar"
             style={{ cursor: "pointer" }}
-            onClick={props.onClick}
+            onClick={showLogoutButton}
           />
+        )}
+        {showButton && (
+          <ul
+            style={{
+              position: "absolute",
+              top: "3.7rem",
+              left: ".5rem",
+              backgroundColor: "white",
+              width: "150px",
+              margin: "0",
+              padding: "0",
+            }}
+          >
+            <li>
+              <button className="logout__Btn" onClick={props.onClick}>
+                SignOut
+              </button>
+            </li>
+          </ul>
         )}
         <AccessTimeIcon />
       </div>
