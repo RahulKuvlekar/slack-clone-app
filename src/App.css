@@ -3,8 +3,10 @@
 }
 .app__body {
   display: flex;
-  flex-direction: row;
+  flex-direction: row wrap;
   height: 100vh;
+  background: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png")
+    no-repeat center/cover;
 }
 /* .app__body > aside {
   max-width: 260px;
@@ -14,4 +16,13 @@ a {
 }
 li {
   list-style: none;
+}
+.home__section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+}
+.home__section h1 {
+  font-size: 5rem;
 }

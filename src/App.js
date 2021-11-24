@@ -43,7 +43,17 @@ function App() {
             {/* React Router Chat Screen  */}
             <Switch>
               <Route exact path="/">
-                <h1>Welcome Home</h1>
+                <div className="home__section">
+                  <h1>Welcome Home</h1>
+                  {/* <ul>
+                    <li>
+                      Global channels cannot be deleted i.e General, Telegram,
+                      Youtube
+                    </li>
+                    <li>User can Create,Edit,Delete Channels</li>
+                    <li>User can send,Edit,messages</li>
+                  </ul> */}
+                </div>
               </Route>
               <Route path="/rooms/:roomId">
                 <Chat />
