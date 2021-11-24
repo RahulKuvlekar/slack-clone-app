@@ -1,8 +1,11 @@
 .chatInputMessage {
   border-radius: 20px;
-  position: fixed;
-  bottom: 2rem;
-  width: 75%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 1rem 0;
 }
 .chatInputMessage > form {
   position: relative;
