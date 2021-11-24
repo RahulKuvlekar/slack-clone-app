@@ -40,6 +40,7 @@ const StateContextProvider = (props) => {
   };
   const LoginGuestUserHandler = (user) => {
     dataDispatch({ task: "SET_USER", user: GUEST_ID });
+    localStorage.setItem("user", JSON.stringify(GUEST_ID));
   };
 
   const dataContext = {
