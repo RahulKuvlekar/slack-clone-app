@@ -24,6 +24,7 @@ const Chat = () => {
   const [editNameModal, showEditNameModal] = useState(false);
   const [deleteChannelModal, setDeleteChannelModal] = useState(false);
   const [channelNameInput, showChannelNameInput] = useState("");
+  const [getDetails, setGetDetails] = useState(false);
   // console.log("SET CHANNEL ", channel);
   const hideDeleteNameModal = () => {
     setDeleteChannelModal(false);
@@ -185,10 +186,28 @@ const Chat = () => {
                 Delete
               </button>
             )}
-            <p>
+            <button
+              className="details__btn"
+              style={{
+                backgroundColor: `${
+                  getDetails ? "rgb(209, 208, 208)" : "white"
+                }`,
+              }}
+              onClick={() => {
+                setGetDetails((prevState) => !prevState);
+              }}
+            >
               <InfoOutlinedIcon />
               Details
-            </p>
+              <ul style={{ display: `${getDetails ? "block" : "none"}` }}>
+                <li>
+                  Admin-{" "}
+                  {channel?.creatorName
+                    ? channel?.creatorName
+                    : "Kuvlekar@Slack"}
+                </li>
+              </ul>
+            </button>
           </div>
         </div>
         <div className="chat__message__section">

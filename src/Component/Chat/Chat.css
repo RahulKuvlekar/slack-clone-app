@@ -4,6 +4,7 @@
   flex-grow: 1;
   /* padding-bottom: 150px; */
   margin-bottom: 4rem;
+  background: rgba(255, 255, 255, 0.65);
 }
 .chat__header {
   display: flex;
@@ -86,6 +87,25 @@
 }
 .chat__message__section {
   /* min-height: 68vh; */
-  max-height: 68vh;
+  max-height: 65vh;
   overflow-y: auto;
+}
+.details__btn {
+  position: relative;
+}
+.details__btn ul {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  padding: 1rem 0;
+  border: 1px solid rgb(194, 192, 192);
+  min-width: 230px;
+  text-align: center;
+  background-color: whitesmoke;
+}
+.details__btn li {
+  display: block;
+  padding: 0.5rem;
+  font-size: medium;
+  font-weight: 500;
 }
