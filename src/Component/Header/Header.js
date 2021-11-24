@@ -24,7 +24,7 @@ const Header = (props) => {
   }
   return (
     <div className="header">
-      <div className="header__left">
+      <div className="header__left" style={{ width: "10%" }}>
         {context.user?.photoURL ? (
           <img
             style={{
@@ -63,15 +63,16 @@ const Header = (props) => {
             </li>
           </ul>
         )}
-        <AccessTimeIcon />
+        {/* <AccessTimeIcon /> */}
       </div>
-      <div className="header__search">
+      <h1 style={{ width: "90%", textAlign: "center" }}>Kuvlekar@Slack.Com</h1>
+      {/* <div className="header__search">
         <SearchIcon fontSize="large" />
         <input type="text" placeholder="Search Channels" />
       </div>
       <div className="header__right">
         <HelpOutlineIcon />
-      </div>
+      </div> */}
     </div>
   );
 };
