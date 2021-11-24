@@ -24,6 +24,7 @@ const SidebarOption = (props) => {
       db.collection("rooms").add({
         name: channelNameInput,
         creatorId: props.creatorId,
+        creatorName: props.creatorName,
       });
 
       context.dispatchToast({
