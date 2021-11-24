@@ -40,17 +40,16 @@ const Sidebar = () => {
     <aside className="sidebar">
       <div className="sidebar__header">
         <div className="sidebar__header__info">
-          <h2>Kuvlekar@Slack</h2>
-          <h3>
+          <h2>
             <FiberManualRecordIcon />
             {context.user?.displayName}
-          </h3>
+          </h2>
         </div>
-        <CreateIcon
+        {/* <CreateIcon
           onClick={() => {
             window.confirm("Press a button!");
           }}
-        />
+        /> */}
       </div>
       {/* <SidebarOption Icon={InsertCommentIcon} title="Thread" />
       <SidebarOption Icon={InboxIcon} title="Mentions & Reactions" />
@@ -71,6 +70,7 @@ const Sidebar = () => {
         Icon={AddIcon}
         title="Add Channels"
         creatorId={context.user?.uid}
+        creatorName={context.user?.displayName}
         addChannel
       />
       {/* Connect to DataBase and Add More Channels */}
