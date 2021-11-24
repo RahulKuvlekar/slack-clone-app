@@ -27,7 +27,12 @@ const Header = (props) => {
       <div className="header__left">
         {context.user?.photoURL ? (
           <img
-            style={{ width: "3rem", borderRadius: "50%", cursor: "pointer" }}
+            style={{
+              width: "3rem",
+              height: "3rem",
+              borderRadius: "50%",
+              cursor: "pointer",
+            }}
             src={context.user?.photoURL}
             alt={context.user?.displayName}
             onClick={showLogoutButton}

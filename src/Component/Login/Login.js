@@ -55,6 +55,25 @@ const Login = () => {
         <h1>Sign in to Kuvlekar@slack</h1>
         <p>RahulKuvlekar.slack.com</p>
         <Button onClick={signIn}>Sign With Google</Button>
+        <button
+          className="btn-Google"
+          style={{ marginBottom: "1rem" }}
+          onClick={() => {
+            context.loginAsGuest();
+            context.dispatchToast({
+              type: "ADD_NOTIFICATION",
+              payload: {
+                id: uuidv4(),
+                type: "SUCCESS",
+                title: "Login Successfully Guest",
+                message: "You are been Login.Thank You",
+              },
+            });
+          }}
+        >
+          <img src="/images/user.svg" alt="user-logo" />
+          Login as GuestUser
+        </button>
       </div>
     </div>
   );

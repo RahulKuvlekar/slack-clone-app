@@ -21,7 +21,7 @@
 .chat__message img {
   height: 3rem;
   width: 3rem;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 50%;
 }
 .chat__message__info {
