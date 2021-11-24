@@ -4,15 +4,16 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import CreateIcon from "@mui/icons-material/Create";
 import SidebarOption from "./SidebarOption";
 import db from "../../firebase";
-import InsertCommentIcon from "@mui/icons-material/InsertComment";
-import InboxIcon from "@mui/icons-material/Inbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import AppsIcon from "@mui/icons-material/Apps";
-import FileCopyIcon from "@mui/icons-material/FileCopy";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import BlurOnIcon from "@mui/icons-material/BlurOn";
+// import InsertCommentIcon from "@mui/icons-material/InsertComment";
+// import InboxIcon from "@mui/icons-material/Inbox";
+// import DraftsIcon from "@mui/icons-material/Drafts";
+// import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+// import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+// import AppsIcon from "@mui/icons-material/Apps";
+// import FileCopyIcon from "@mui/icons-material/FileCopy";
+// import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
 import StateContext from "../../Context/state-context";
 const Sidebar = () => {
@@ -45,18 +46,26 @@ const Sidebar = () => {
             {context.user?.displayName}
           </h3>
         </div>
-        <CreateIcon />
+        <CreateIcon
+          onClick={() => {
+            window.confirm("Press a button!");
+          }}
+        />
       </div>
-      <SidebarOption Icon={InsertCommentIcon} title="Thread" />
+      {/* <SidebarOption Icon={InsertCommentIcon} title="Thread" />
       <SidebarOption Icon={InboxIcon} title="Mentions & Reactions" />
       <SidebarOption Icon={DraftsIcon} title="Saved Items" />
       <SidebarOption Icon={BookmarkBorderIcon} title="Channel Browser" />
       <SidebarOption Icon={PeopleAltIcon} title="People & User group" />
       <SidebarOption Icon={AppsIcon} title="Apps" />
       <SidebarOption Icon={FileCopyIcon} title="File Browser" />
-      <SidebarOption Icon={ExpandLessIcon} title="Show Less" />
+      <SidebarOption Icon={ExpandLessIcon} title="Show Less" /> */}
       <hr />
-      <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
+      {/* <SidebarOption Icon={ExpandMoreIcon} title="Channels" /> */}
+      <div style={{ cursor: "default" }} className={`sidebarOption`}>
+        <BlurOnIcon className="sidebarOption__icon" />
+        <h2>Channels</h2>
+      </div>
       <hr />
       <SidebarOption
         Icon={AddIcon}

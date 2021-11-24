@@ -16,8 +16,9 @@ const Header = (props) => {
     });
   };
 
-  if (showButton) {
-    setInterval(() => {
+  if (showButton === true) {
+    setTimeout(() => {
+      console.log("Show button executed ");
       setShowButton(false);
     }, 5000);
   }
